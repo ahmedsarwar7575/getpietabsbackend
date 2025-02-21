@@ -10,6 +10,7 @@ import { sequelize } from './config/dbConfig'
 // Importing tab1 routes
 
 import tab1Routes from './routes/tab1'
+import tab1FromRoutes from './routes/tab1Form'
 
 
 dotenv.config({ path: './.env', });
@@ -41,7 +42,7 @@ app.get('/', (req, res) => {
 
 // Routes
 
-app.use('/api', [tab1Routes])
+app.use('/api', [tab1Routes, tab1FromRoutes])
 
 app.get("*", (req, res) => {
   res.status(404).json({

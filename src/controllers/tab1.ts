@@ -17,7 +17,6 @@ export const createTab1 = async (req: Request, res: Response) => {
 export const getTab1 = async (req: Request, res: Response) => {
     try {
         const tab1 = await Tab1.findAll();
-        if (tab1.length === 0 || !tab1) return res.status(404).json({ message: "Tab1 not found" });
         res.status(200).json(tab1);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch tab1" });
