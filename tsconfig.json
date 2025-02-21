@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -11,10 +10,20 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "paths": {
-        "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
-    "typeRoots": ["./src/types"]
+    "typeRoots": [
+      "./src/types"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "getpie-tools/node_modules",
+    "dist"
+  ]
 }
