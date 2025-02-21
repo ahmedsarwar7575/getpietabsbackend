@@ -9,7 +9,7 @@ export const createTab1 = async (req: Request, res: Response) => {
         const newTab1 = await Tab1.create({ image, description });
         res.status(201).json(newTab1);
     } catch (error) {
-        res.status(500).json({ error: "Failed to create tab1" });
+        res.status(500).json({ error: "Failed to create tab1", });
     }
 };
 
