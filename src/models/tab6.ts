@@ -18,6 +18,7 @@ Tab6.init(
             type: DataTypes.INTEGER.UNSIGNED,
             autoIncrement: true,
             primaryKey: true,
+            allowNull: false,
         },
         image: {
             type: DataTypes.STRING,
@@ -26,7 +27,8 @@ Tab6.init(
     },
     {
         sequelize, // Pass the Sequelize instance
-        tableName: "tab1", // Adjust table name as required
-        timestamps: true, // Enable createdAt and updatedAt fields
+        tableName: "tab6", // Ensure this matches your actual DB table
+        timestamps: true,
     }
 );
+

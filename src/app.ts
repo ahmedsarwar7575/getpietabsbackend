@@ -14,6 +14,9 @@ import { fileURLToPath } from "url";
 import tab1Routes from './routes/tab1'
 import tab1FromRoutes from './routes/tab1Form'
 import tab6Routes from './routes/tab6'
+import tab6FormRoutes from './routes/tab6Form'
+
+
 import path from "path"
 
 dotenv.config({ path: './.env', });
@@ -53,7 +56,7 @@ app.get('/', (req, res) => {
 
 // Routes
 
-app.use('/api', [tab1Routes, tab1FromRoutes, tab6Routes])
+app.use('/api', [tab1Routes, tab1FromRoutes, tab6Routes, tab6FormRoutes])
 
 app.get("*", (req, res) => {
   res.status(404).json({

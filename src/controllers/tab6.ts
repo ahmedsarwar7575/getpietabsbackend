@@ -5,23 +5,23 @@ import { Request, Response } from "express";
 
 export const createTab6 = async (req: Request, res: Response) => {
     try {
-        const findTab6 = await Tab6.findAll()
-        if (!findTab6) {
-            return res.status(400).json({ error: "Tab6 already exists" });
-        }
-        const image = req.file?.filename; // Ensure it's properly extracted
-        console.log(image)
+        const image = req.file?.filename;
         if (!image) {
             return res.status(400).json({ error: "Image is required" });
         }
 
-
         const newTab6 = await Tab6.create({ image });
-        res.status(201).json(newTab6);
+
+        // Fetch the instance again to ensure `id` is populated
+        const createdRecord = await Tab6.findByPk(newTab6.id);
+
+        res.status(201).json(createdRecord);
     } catch (error) {
-        res.status(500).json({ error: "Failed to create tab6", });
+        console.error("Error creating Tab6:", error);
+        res.status(500).json({ error: "Failed to create tab6" });
     }
 };
+
 
 
 export const getTab6 = async (req: Request, res: Response) => {
