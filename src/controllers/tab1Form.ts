@@ -28,18 +28,22 @@ export const createTab1Form = async (req: Request, res: Response) => {
             return res.status(400).json({ error: "meetingDate is required and must be a valid date" });
         }
 
+        // Fetch image from Tab1
         const tab1Data = await Tab1.findOne({
             attributes: ['image'],
             raw: true
-        })
-        console.log(tab1Data)
+        });
+
+        console.log(tab1Data);
         if (!tab1Data) {
             return res.status(404).json({ error: "Tab1 data not found" });
         }
 
-        const flyerImageUrl = tab1Data.image
+        // Construct full URL for the image
+        const baseUrl = "http://localhost:4000/uploads/";
+        const flyerImageUrl = tab1Data.image ? `${baseUrl}${tab1Data.image}` : null;
 
-        if (!flyerImageUrl || typeof flyerImageUrl !== "string") {
+        if (!flyerImageUrl) {
             return res.status(400).json({ error: "flyerImageUrl is required and must be a valid URL" });
         }
 

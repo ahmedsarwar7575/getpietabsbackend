@@ -6,12 +6,15 @@ import { errorMiddleware } from "@/middlewares/error.js"
 import morgan from "morgan"
 import dotenv from "dotenv"
 import { sequelize } from './config/dbConfig'
+import { fileURLToPath } from "url";
+
 
 // Importing tab1 routes
 
 import tab1Routes from './routes/tab1'
 import tab1FromRoutes from './routes/tab1Form'
-
+import tab6Routes from './routes/tab6'
+import path from "path"
 
 dotenv.config({ path: './.env', });
 
@@ -21,6 +24,14 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+// make upload folder accessible for browser
+
+// Manually define __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve uploads folder statically
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(
   helmet({
@@ -42,7 +53,7 @@ app.get('/', (req, res) => {
 
 // Routes
 
-app.use('/api', [tab1Routes, tab1FromRoutes])
+app.use('/api', [tab1Routes, tab1FromRoutes, tab6Routes])
 
 app.get("*", (req, res) => {
   res.status(404).json({
