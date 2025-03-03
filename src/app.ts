@@ -80,3 +80,5 @@ sequelize.sync(
 
 
 });
+
+module.exports = app
