@@ -17,6 +17,7 @@ import tab6Routes from './routes/tab6'
 import tab6FormRoutes from './routes/tab6Form'
 import tab2Routes from './routes/tab2'
 import tab2FormRoutes from './routes/tab2Form'
+import tab3Routes from './routes/tab3'
 
 
 import path from "path"
@@ -58,7 +59,7 @@ app.get('/', (req, res) => {
 
 // Routes
 
-app.use('/api', [tab1Routes, tab1FromRoutes, tab6Routes, tab6FormRoutes, tab2Routes, tab2FormRoutes])
+app.use('/api', [tab1Routes, tab1FromRoutes, tab6Routes, tab6FormRoutes, tab2Routes, tab2FormRoutes, tab3Routes])
 
 app.get("*", (req, res) => {
   res.status(404).json({
